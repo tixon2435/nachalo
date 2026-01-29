@@ -1,0 +1,658 @@
+Тихон, [29.01.2026 13:43]
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио | Илюшкин Тихон</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #ec4899;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: var(--light-gray);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+Тихон, [29.01.2026 13:43]
+.about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-tag {
+            background-color: var(--light-gray);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Journey Section */
+        .journey {
+            background-color: #f1f5f9;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .journey h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .journey p {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .contact-text h4 {
+            margin-bottom: 5px;
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: var(--primary);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+Тихон, [29.01.2026 13:43]
+.footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-column p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: #334155;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--light-gray);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .github-link:hover {
+            background-color: #cbd5e1;
+        }
+
+        .github-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Тихон<span><span></a>
+                <div class="nav-links">
+                    <a href="#home">Главная</a>
+                    <a href="#about">Обо мне</a>
+                    <a href="#portfolio">Портфолио</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Привет! Я <span>Илюшкин Тихон</span><br>Начинающий разработчик</h1>
+                <p>Учусь создавать современные веб-сайты и постепенно развиваюсь в мире программирования. Этот сайт — мой первый шаг в портфолио.</p>
+                <a href="#portfolio" class="btn">Мой первый проект</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+
+
+<div class="section-title">
+                <h2>Обо мне</h2>
+                <p>Узнайте больше о моем пути в разработке</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Начинающий разработчик, который учится и растёт</h3>
+                    <p>Я только начинаю свой путь в веб-разработке, но уже с энтузиазмом изучаю HTML, CSS и JavaScript. Каждый день я узнаю что-то новое и применяю полученные знания на практике.</p>
+                    <p>Мой подход основан на постоянном обучении, экспериментировании и желании создавать полезные и красивые веб-сайты. Я верю, что каждый великий разработчик когда-то начинал с первого "Hello World".</p>
+                    <div class="skills">
+                        <span class="skill">HTML5</span>
+                        <span class="skill">CSS3</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">Git</span>
+                        <span class="skill">GitHub</span>
+                        <span class="skill">Адаптивная верстка</span>
+                    </div>
+                    
+                    <div class="journey">
+                        <h4>Мой путь развития</h4>
+                        <p>• Изучаю основы веб-разработки</p>
+                        <p>• Практикуюсь на реальных проектах</p>
+                        <p>• Постепенно осваиваю новые технологии</p>
+                        <p>• Стремлюсь к созданию качественных решений</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                   <center> <img src="dubai.jpg" alt="Илюшкин Тихон" width="500"> </center>
+                </>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Мои проекты</h2>
+                <p>Пока у меня нет коммерческих работ, но есть мой первый сайт!</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img">🚀</div>
+                    <div class="portfolio-info">
+                        <h3>Мое первое портфолио</h3>
+                        <p>Этот сайт — мой первый полноценный проект, созданный с нуля. Здесь я применил все свои текущие знания HTML и CSS.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">CSS3</span>
+                            <span class="portfolio-tag">Адаптивная верстка</span>
+                        </div>
+                        <a href="https://tixon2435.github.io/sv/" class="github-link">
+                            <span class="github-icon">🔗</span>
+                            Посмотреть проект
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img">📚</div>
+                    <div class="portfolio-info">
+                        <h3>В процессе обучения</h3>
+                        <p>Постоянно работаю над новыми мини-проектами и упражнениями для улучшения своих навыков веб-разработки.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Практика</span>
+                            <span class="portfolio-tag">Обучение</span>
+                            <span class="portfolio-tag">Эксперименты</span>
+                        </div>
+                        <p style="margin-top: 15px; font-style: italic; color: var(--gray);">Следите за обновлениями!</p>
+
+Тихон, [29.01.2026 13:43]
+</div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img">💡</div>
+                    <div class="portfolio-info">
+                        <h3>Идеи для будущих проектов</h3>
+                        <p>У меня много идей для новых проектов! Планирую создавать интерактивные приложения, игры и полезные инструменты.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Планирование</span>
+                            <span class="portfolio-tag">Идеи</span>
+                            <span class="portfolio-tag">Будущее</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Связаться со мной</h2>
+                <p>Хотите пообщаться или дать совет начинающему разработчику?</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Информация для связи</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:tixon2435@gmail.com">tixon2435@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h4>Локация</h4>
+                            <p>Россия</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-text">
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/tixon2435" target="_blank">github.com/tixon2435</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Ваш email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Тема сообщения">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Ваше сообщение или совет для начинающего разработчика..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Илюшкин Тихон</h3>
+                    <p>Начинающий веб-разработчик, который учится создавать современные и функциональные веб-сайты. Каждый день — это новый шаг вперёд!</p>
+                    <div class="social-links">
+                        <a href="https://github.com/tixon2435" class="social-link" target="_blank">gh</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+
+Тихон, [29.01.2026 13:43]
+<h3>Быстрые ссылки</h3>
+                    <p><a href="#home">Главная</a></p>
+                    <p><a href="#about">Обо мне</a></p>
+                    <p><a href="#portfolio">Портфолио</a></p>
+                    <p><a href="#contact">Контакты</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Текущий статус</h3>
+                    <p>Изучаю основы веб-разработки</p>
+                    <p>Создаю свой первый сайт</p>
+                    <p>Готов к новым вызовам</p>
+                    <p>Открыт
